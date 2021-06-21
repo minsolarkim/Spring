@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 	여기다 빼는 거다 == 스프링한테 이렇게 해줄래?  injection-->
+
+<!-- 	Exam exam = new NewlecExam(); -->
+		<bean id="exam" class="spring.di.entity.NewlecExam" />
+<!-- 				중복 파일 이름 있을 수 있기 때문에 패키지명까지 입력해준다 -->
+
+<!-- 	ExamConsole console  = new GridExamConsole(exam); // DI -->
+		<bean id="console" class="spring.di.ui.GridExamConsole" >
+		
+<!-- 		console.setExam(exam); -->
+<!-- 		<property name="setExam"></property> -->
+			<property name="exam" ref="exam" /> 
+<!-- 		함수 설정이라 생각하면 됨  // set 생략하고  E소문자로 바꿔준다 -->
+<!-- 		property에는 value, ref 두 가지가 있는데 그 값에 맞게 넣어준다 - exam은 ref... why? -->
+		</bean>
+		
+</beans>
